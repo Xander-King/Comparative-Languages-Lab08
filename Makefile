@@ -15,4 +15,12 @@ check-parameters: parameters.output
 	mcs $*.cs
 
 update:
- 	git pull https://gitlab.csi.miamioh.edu/cse465/instructor/lab-08 master
+	git stash
+ 	git pull https://gitlab.csi.miamioh.edu/cse465/instructor/lab08 master
+	git stash pop
+
+submit: check
+	git add -u 
+	git commit -m "Submitting"
+	git push origin master
+
