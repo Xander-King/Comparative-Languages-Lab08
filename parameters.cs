@@ -3,8 +3,8 @@ using System;
 namespace Params {
     class Program {
         // TODO: Write a static 'swap' method
-        //       The method takes two parameters and excahnges their values. 
-        public static void Swap(int a, int b) {
+        //       The method takes two parameters and exchanges their values. 
+        public static void Swap(ref int a, ref int b) {
             int tmp = a;
             a = b;
             b = tmp;
@@ -20,7 +20,7 @@ namespace Params {
         //       Use Int32.Parse to convert the strin to an integer
         //       Use a Try/Catch block to handle one of the documented exceptions
         //       Please refer to the docs for Int32.Parse to see the list of exceptions to handle. 
-        public static bool TryParseInt(int value) {
+        public static bool TryParseInt(out int value) {
             try {
                 value = Int32.Parse(Console.ReadLine());
                 return true;
@@ -36,7 +36,7 @@ namespace Params {
             
             Console.WriteLine();
             Console.Write("Please enter a number for a: ");
-            while (!TryParseInt( a)) //<-- You will need to change something here
+            while (!TryParseInt(out a)) //<-- You will need to change something here
             { 
                 Console.WriteLine();
                 Console.WriteLine("ERROR - Invalid number.");
@@ -46,7 +46,7 @@ namespace Params {
             Console.WriteLine($"a has been set to {a}");
             Console.WriteLine();
             Console.Write("Please enter number for b : ");
-            while (!TryParseInt( b)) { //<-- You will need to change somehing here
+            while (!TryParseInt(out b)) { //<-- You will need to change somehing here
                 Console.WriteLine();
                 Console.WriteLine("ERROR - Invalid number.");
                 Console.Write("Please enter a number for b:");
@@ -56,7 +56,7 @@ namespace Params {
             Console.WriteLine();
             Console.WriteLine($"Before: a={a, -6} and b={b,-6}");
             
-            Swap( a,  b); //<-- You will need to make a change to this line
+            Swap(ref a, ref b); //<-- You will need to make a change to this line
 
             Console.WriteLine($"After : a={a, -6} and b={b,-6}");
         }

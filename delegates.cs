@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 
+using System;
+using System.Collections.Generic;
+
 namespace cse465 {
     class DelegatesExample {
         public delegate R Function<R, T>(T value);
@@ -11,6 +14,10 @@ namespace cse465 {
             //         should be familiar with already from scheme
             //         But use a loop -- not recursion!
             List<R> result = new List<R>();
+
+            foreach(T elem in theList){
+                result.Add(f(elem));
+            }
             
             return result;
         }
@@ -63,6 +70,8 @@ namespace cse465 {
             NumberHandler handler = null;      
             // TODO -- add printIfEvens to the delegate `handler`
             // TODO -- add printIfPositive to the delegate `handler`
+            handler = printIfEven;
+            handler += printIfPositive;
 
             // This demonstrates the way delegate can be used as callbacks in C#
             foreach (int n in numbers) {
